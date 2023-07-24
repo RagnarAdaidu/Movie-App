@@ -1,0 +1,264 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+html {
+  
+  font-size: 62.5%;
+  /* overflow-x: hidden; */
+}
+body {
+  font-family: "Rubik", sans-serif;
+  line-height: 1;
+  font-weight: 400;
+  color: #555;
+
+  /* overflow-x: hidden; */
+}
+
+/**************************/
+/* GENRAL REUSABLE COMPONENTS */
+/**************************/
+
+.container {
+  /* 1140px */
+  max-width: 100rem;
+  padding: 0 3.2rem;
+  margin: 0 auto;
+}
+
+.grid {
+  display: grid;
+  column-gap: 2.4rem;
+  row-gap: 6.2rem;
+
+  /* margin-bottom: 9.6rem; */
+}
+
+.grid-special {
+  display: grid;
+  column-gap: 2.4rem;
+  row-gap: 6.2rem;
+  width: 100%;
+  position: relative;
+  /* margin-bottom: 9.6rem; */
+}
+
+.custom{
+  grid-template-columns: 1fr 4fr;
+}
+
+.grid--2-cols {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.grid--3-cols {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.grid--4-cols {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.btn,
+.btn:link,
+.btn:visited {
+  display: inline-block;
+
+  text-decoration: none;
+  font-size: 1.6rem;
+  /* font-weight: 600; */
+  padding: 1.6rem 3.2rem;
+  border-radius: 25px;
+
+  /* Only necessary for .btn */
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+
+  /* Put transition on original "state" */
+  /* transition: background-color 0.3s; */
+  transition: all 0.3s;
+  background: #ddd;
+}
+
+.heading-primary,
+.heading-secondary,
+.heading-tertiary {
+  font-weight: 700;
+  color: #333;
+  /* color: #45260a; */
+  /* color: #343a40; */
+  letter-spacing: -0.5px;
+}
+
+.heading-primary {
+  font-size: 5.2rem;
+  line-height: 1.05;
+  margin-bottom: 3.2rem;
+}
+
+
+.heading-tertiary {
+  font-size: 3rem;
+  line-height: 1.2;
+  margin-bottom: 3.2rem;
+}
+
+.subheading {
+  display: block;
+  font-size: 2.4rem;
+  line-height: 1.2;
+  grid-column: 1 / -1;
+}
+
+.grid-align-self{
+  align-self: end;
+}
+
+/**************************/
+/* NOT AT ALL GENRAL REUSABLE COMPONENTS */
+/**************************/
+.grid-special .sidebarSlide{
+  position: absolute;
+  top: 0;
+  left: 75%;
+  width: 100%;
+  height: 100%;
+  z-index: 999;
+  background-color: #fff;
+}
+
+.section-sidebar{
+  border-right: #eee solid 2px;
+  height: 100vh;
+}
+
+.search {
+  justify-self: center;
+  border: none;
+  padding: 1.1rem 1.6rem;
+  font-size: 1.8rem;
+  border-radius: 0.7rem;
+  transition: all 0.3s;
+  color: var(--color-text);
+
+  /* background-color: var(--color-background-900); */
+  background-color: var(--color-primary-light);
+}
+
+.search-bar{
+  grid-column: 1 / -1;
+}
+
+.label-and-input label{
+  display: block;
+}
+.label-and-input input{
+  background: lightblue;
+  width: 100%;
+  padding: 1.6rem 3.2rem;
+  border-radius: 9px;
+
+  /* Only necessary for .btn */
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+
+  /* Put transition on original "state" */
+  /* transition: background-color 0.3s; */
+  transition: all 0.3s;
+}
+
+.label-and-input{
+  grid-column: span 3;
+}
+
+.search-btn{
+  /* border-radius: 50px; */
+  width: 100%;
+  justify-self: center;
+  background: lightblue;
+}
+
+.inline-element{
+  display: grid;
+}
+.list li {
+  position: relative;
+  display: grid;
+  grid-template-columns: 4rem 1fr;
+  grid-template-rows: auto auto;
+  column-gap: 2.4rem;
+  font-size: 1.6rem;
+  align-items: center;
+
+  padding: 1.6rem 3.2rem;
+  border-bottom: 1px solid var(--color-background-100);
+}
+
+.list.list-movies li {
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.list.list-movies li:hover {
+  background-color: var(--color-background-100);
+}
+
+.list img {
+  width: 100%;
+  grid-row: 1 / -1;
+}
+
+.list h3 {
+  font-size: 1.8rem;
+}
+
+.list div {
+  display: flex;
+  align-items: center;
+  gap: 2.4rem;
+}
+
+.list p {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+.take-all-row{
+  grid-column: 1/ -1;
+}
+
+.movie-div{
+  border-radius: 15px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.movie-div img{
+  width: 100%;
+  height: 35.5rem;
+  position: relative;
+  /* overflow: hidden; */
+}
+
+.movie-div .btn{
+  position: absolute;
+  /* bottom: 0; */
+  z-index: 998;
+  transform: translate(-160%, 550%);
+  /* transform: translateY(100%); */
+
+}
+
+.heading-primary-blue{
+  color: #1971c2;
+}
