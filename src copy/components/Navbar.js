@@ -1,12 +1,11 @@
 import React, { useState } from "react";
 
-export default function Navbar({query, setQuery}) {
-  // const [query, setQuery] = useState("");
+export default function Navbar() {
+  const [query, setQuery] = useState("");
 
   return (
-      <div className="label-and-input grid-align-self" id='search-for-movie'>
+      <div className="label-and-input grid-align-self">
         <h3 htmlFor="search" className="h3 heading-tertiary">Explore</h3>
-        <label htmlFor=""></label>
         <input
           className="search"
           type="text"

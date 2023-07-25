@@ -27,7 +27,7 @@ export default function SidebarSlide({ onSelectedId2, onCloseMovie }) {
     getMovieDetails()
   }, [onSelectedId2])
   return (
-    <div className='sidebarSlide' id='letSee'>
+    <div className='sidebarSlide'>
       <button className='btn-back' onClick={() => onCloseMovie()}>
         &larr;
       </button>
@@ -37,7 +37,6 @@ export default function SidebarSlide({ onSelectedId2, onCloseMovie }) {
         <p className='subheading2'>{plot}</p>
         <button className='btn'>Watch</button>
       </div>
-      <div className="modal-backdrop" onClick={onCloseMovie}></div>
     </div>
   )
 }

@@ -10,9 +10,7 @@ export default function Movie({ movie, onSelectedId }) {
             <span>{movie.Year}</span>
           </p>
         </div> */}
-        <button onClick={() => onSelectedId(movie.imdbID)} className="btn">
-          View 
-        </button>
+        <button onClick={() => onSelectedId(movie.imdbID)} className="btn">View</button>
       </div>
     </li>
   );
