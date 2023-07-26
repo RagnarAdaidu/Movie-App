@@ -5,7 +5,8 @@ export default function Navbar({query, setQuery}) {
 
   return (
       <div className="label-and-input grid-align-self" id='search-for-movie'>
-        <label htmlFor="search" className="h3 heading-tertiary">Explore</label>
+        <h3 htmlFor="search" className="h3 heading-tertiary">Explore</h3>
+        <label htmlFor=""></label>
         <input
           className="search"
           type="text"

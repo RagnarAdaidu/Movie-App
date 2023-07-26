@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import MainContent from "./pages/MainContent";
 import Sidebar from "./pages/Sidebar";
-import SearchDisplayMovie from "./features/movies/SearchDisplayMovie";
 
 const KEY = "1fbb7d99";
 // let query = 'mortal'
@@ -42,7 +41,6 @@ function App() {
     <div className={`${selectedId ? 'App-dark' : 'App'}`}>
       {/* <h1>Silver tongue devil</h1> */}
       <div className="grid custom">
-        <SearchDisplayMovie />
       <Sidebar />
       <MainContent onFetchMovie={fetchMovies} onCloseMovie={handleCloseMovie} onSelectedId2={selectedId} onSelectedId={handleSelectedId} movies={movies} query={query} setQuery={setQuery} />
       </div>
