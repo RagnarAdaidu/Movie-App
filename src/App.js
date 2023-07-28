@@ -1,52 +1,26 @@
-import { useEffect, useState } from "react";
-import MainContent from "./pages/MainContent";
 import Sidebar from "./pages/Sidebar";
 import SearchDisplayMovie from "./features/movies/SearchDisplayMovie";
-
-const KEY = "1fbb7d99";
-// let query = 'mortal'
+import MovieList from "./features/movies/MovieList";
+import SidebarSlide from "./components/SidebarSlide";
+import { useSelector } from "react-redux";
+import { BrowserRouter } from "react-router-dom";
 
 function App() {
-  const [query, setQuery] = useState('')
-  const [movies, setMovies] = useState([])
-  const [selectedId, setSelectedId] = useState('')
-
-  // console.log(query)
-
-  function handleSelectedId(id){
-    setSelectedId(selectedId => id === selectedId ? null : id)
-  }
-
-  function handleCloseMovie(){
-    setSelectedId('')
-  }
-
-  // console.log(selectedId)
-  
-  // useEffect(function(){
-    async function fetchMovies(){
-      const res = await fetch(`http://www.omdbapi.com/?apikey=${KEY}&s=${query}`)
-      const data = await res.json()
-
-      if(!res.ok){
-        console.log('hello world')
-      }
-      
-      setMovies(data.Search);
-    }
-    // fetchMovies()
-  // }, [query])
-  // const movieTitle = movies?.find((movie) => movie.imdbID === selectedId)
+  const { movieId } = useSelector((store) => store.movies);
 
   return (
-    <div className={`${selectedId ? 'App-dark' : 'App'}`}>
-      {/* <h1>Silver tongue devil</h1> */}
-      <div className="grid custom">
-        <SearchDisplayMovie />
-      <Sidebar />
-      <MainContent onFetchMovie={fetchMovies} onCloseMovie={handleCloseMovie} onSelectedId2={selectedId} onSelectedId={handleSelectedId} movies={movies} query={query} setQuery={setQuery} />
+    <BrowserRouter>
+      <div className={`${movieId ? "App-dark" : "App"}`}>
+        <div className="grid custom">
+          <Sidebar />
+          <div className="grid grid--4-cols container2">
+            <SearchDisplayMovie />
+            <MovieList />
+            {movieId && <SidebarSlide />}
+          </div>
+        </div>
       </div>
-    </div>
+    </BrowserRouter>
   );
 }
 

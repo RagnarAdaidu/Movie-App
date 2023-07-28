@@ -1,41 +1,43 @@
-import React, { useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { fetchMovies } from './moviesSlice'
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { fetchMovies } from "./moviesSlice";
 
 export default function SearchDisplayMovie() {
-  const [query, setQuery] = useState('')
-  const { isLoading, movies } = useSelector(store => store.movies)
+  const [query, setQuery] = useState("");
 
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
+  let title = query;
 
-  function handleClick(e){
-    e.preventDefault()
-    if (!query) return
-    dispatch(fetchMovies(query))
-    setQuery('')
+  function handleClick(e) {
+    e.preventDefault();
+    if (!query) return;
+    dispatch(fetchMovies(query));
   }
-  console.log(isLoading, movies)
-
 
   return (
-    <div className='section-search-display'>
-      <form className="label-and-input grid-align-self" id='search-for-movie' onSubmit={handleClick}>
-        <div>
-          <label htmlFor="search" className="h3 heading-tertiary">Explore</label>
+    <div className="form-div">
+      <form className="form grid grid--4-cols" onSubmit={handleClick}>
+        <div className="labelInput">
+          <label htmlFor="search" className="h3 heading-tertiary">
+            Explore
+          </label>
           <input
             className="search"
             type="text"
             id="search"
-            placeholder="Search movies..."
+            placeholder="Search..."
             value={query}
             onChange={(e) => setQuery(e.target.value)}
           />
         </div>
 
-        <button>Search</button>
-        <p className="subheading">Result for: <strong>{query}</strong> </p>
+        <div className="search-button-container">
+          <button className="search-btn btn">Search</button>
+        </div>
       </form>
-
+      <p className="subheading">
+        Result for: <strong>{title}</strong>{" "}
+      </p>
     </div>
-  )
+  );
 }
