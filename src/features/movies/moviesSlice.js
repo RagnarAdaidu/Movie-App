@@ -1,5 +1,6 @@
 const initialState = {
   movies: [],
+  movie: {},
   movieId: '',
   isLoading: false,
 }
@@ -13,7 +14,12 @@ export default function moviesReducer(state=initialState, action){
         ...state,
         movies: action.payload,
         isLoading: false
-
+      }
+    case 'omdb/fetchMovie':
+      return {
+        ...state,
+        movie: action.payload,
+        isLoading: false
       }
     case 'omdb/fetchingMovies':
       return {
@@ -32,9 +38,6 @@ export default function moviesReducer(state=initialState, action){
 }
 
 export function fetchMovies(query){
-  // return {
-  //   type: 'fetch/Movies', payload: initialState
-  // }
   
   return async function(dispatch, getState){
     dispatch({type: 'omdb/fetchingMovies'})
@@ -42,6 +45,17 @@ export function fetchMovies(query){
       const data = await res.json()
       
       dispatch({type:'omdb/fetchMovies', payload: data})
+  }
+}
+
+export function fetchMovie(movieId){
+  
+  return async function(dispatch, getState){
+    dispatch({type: 'omdb/fetchingMovie'})
+    const res = await fetch(`http://www.omdbapi.com/?apikey=${KEY}&i=${movieId}`)
+      const data = await res.json()
+      
+      dispatch({type:'omdb/fetchMovie', payload: data})
   }
 }
 

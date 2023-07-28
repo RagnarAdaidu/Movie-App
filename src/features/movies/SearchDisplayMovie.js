@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { fetchMovies } from "./moviesSlice";
+import { fetchMovies, removeId } from "./moviesSlice";
 
 export default function SearchDisplayMovie() {
   const [query, setQuery] = useState("");
@@ -12,6 +12,11 @@ export default function SearchDisplayMovie() {
     e.preventDefault();
     if (!query) return;
     dispatch(fetchMovies(query));
+  }
+
+  function handleChange(e){
+    setQuery(e.target.value)
+    dispatch(removeId())
   }
 
   return (
@@ -27,7 +32,7 @@ export default function SearchDisplayMovie() {
             id="search"
             placeholder="Search..."
             value={query}
-            onChange={(e) => setQuery(e.target.value)}
+            onChange={ handleChange }
           />
         </div>
 

@@ -43,13 +43,6 @@ body {
   margin: 0 auto;
 }
 
-.container2 {
-  /* 1140px */
-  width: 100rem;
-  padding: 0 3.2rem;
-  margin: 0 auto;
-}
-
 .grid {
   display: grid;
   column-gap: 2.4rem;
@@ -60,6 +53,7 @@ body {
 
 .custom{
   max-width: 140rem;
+  padding: 0 4.8rem;
   grid-template-columns: 1fr 4fr;
 }
 
@@ -207,7 +201,7 @@ body {
 .section-sidebar{
   border-right: #eee solid 2px;
   height: 100vh;
-  padding: 2.4rem 4.8rem;
+  padding: 2.4rem 0;
 }
 
 .search {
@@ -340,6 +334,23 @@ body {
 .main-nav-link{
   cursor: pointer;
 }
+
+.reset-button{
+  background-color: #eee;
+  width: 100%;
+}
+
+.reset-div{
+  text-align: left;
+}
+
+.loader {
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 2rem;
+  font-weight: 600;
+  margin: 4.8rem;
+}
 /**************************/
 /* BELOW 1344px (Smaller desktops) */
 /**************************/
@@ -362,11 +373,11 @@ body {
   .custom{
     grid-template-columns: 1fr 3fr;
   }
+  .labelInput{
+    grid-column: span 2;
+  }
   .grid--4-cols{
     grid-template-columns: repeat(3, 1fr);
-  }
-  .label-and-input{
-    grid-column: span 2;
   }
   .sidebarSlide{
     width: 25%;
@@ -383,38 +394,18 @@ body {
   html{
     font-size: 50%;
   }
-  .custom{
-    grid-template-columns: 1fr 2fr;
-  }
   .grid--4-cols{
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
   }
-  /* .movie-div{
-    width: 80%;
+  .labelInput{
+    grid-column: span 2;
   }
-  .movie-div img{
-    width: 100%;
-    
-  } */
-  .grid-special{
-    padding: 0 6.2rem;
-  }
-  .sidebarSlide{
-    width: 33%;
-  }
-}
-
-/**************************/
-/* BELOW 1000px (Landscape Tablets) */
-/**************************/
-@media (max-width: 63em){
   .custom{
-    grid-template-columns: 2fr;
+    grid-template-columns: 3fr;
   }
   .section-sidebar{
     border-right: none;
     height: 0.01vh;
-    padding: 4.8rem 9.6rem;
     margin-bottom: 9.6rem;
   }
   .header{
@@ -430,9 +421,6 @@ body {
     font-size: 5.2rem;
     line-height: 1.05;
     margin-bottom: 0.01rem;
-  }
-  .grid-special{
-    padding: 0 9.6rem;
   }
   .sidebarSlide{
     width: 36%;
@@ -461,6 +449,7 @@ body {
     transition: all 0.5s ease-in;
 
     /* Hide navigation */
+
     /* Allows NO transitions at all */
     /* display: none; */
 
@@ -511,53 +500,38 @@ body {
   html{
     font-size: 46%;
   }
-  .grid--3-cols {
-    grid-template-columns: repeat(2, 1fr);
+  .labelInput{
+    grid-column: span 1;
   }
-  
   .grid--4-cols {
     grid-template-columns: repeat(2, 1fr);
   }
-  .label-and-input{
-    grid-column: span 1;
-  }
   .movie-div .btn{
     left: 37%
-  }
-  .grid-special{
-    padding: 0 9.6rem;
-  }
-  .take-all-row{
-    /* grid-column: 1/ -1; */
-    margin: 0 auto;
   }
   .section-sidebar{
     padding: 4.8rem 8.2rem;
   }
   .sidebarSlide{
     width: 50%;
-    height: 100vh;
+    height: 100%;
   }
 }
 /**************************/
 /* BELOW 600px (Landscape Tablets) */
 /**************************/
 @media (max-width: 37.5em){
+  .custom{
+    padding: 0 1.2rem;
+  }
   .grid--3-cols {
     grid-template-columns: 1fr;
   }
-  
   .grid--4-cols {
     grid-template-columns: 1fr;
   }
-  /* .label-and-input{
-    grid-column: span 1;
-  } */
   .movie-div .btn{
     left: 40%;
-  }
-  .grid-special{
-    padding: 0 3.2rem;
   }
   .section-sidebar{
     padding: 4.8rem 1.2rem;
@@ -574,6 +548,10 @@ body {
 
   .sidebarSlide{
     width: 100%;
-    height: 100vh;
+    height: 100%;
+  }
+  .reset-button{
+    width: 100%;
   }
 }
+

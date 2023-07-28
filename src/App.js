@@ -4,19 +4,22 @@ import MovieList from "./features/movies/MovieList";
 import SidebarSlide from "./components/SidebarSlide";
 import { useSelector } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
+import Loader from "./components/Loader";
+import ResetButton from "./components/ResetButton";
 
 function App() {
-  const { movieId } = useSelector((store) => store.movies);
+  const { movieId, isLoading } = useSelector((store) => store.movies);
 
   return (
     <BrowserRouter>
       <div className={`${movieId ? "App-dark" : "App"}`}>
         <div className="grid custom">
           <Sidebar />
-          <div className="grid grid--4-cols container2">
+          <div className="grid grid--4-cols">
             <SearchDisplayMovie />
-            <MovieList />
-            {movieId && <SidebarSlide />}
+            <ResetButton />
+            {isLoading ? <Loader /> : <MovieList />}
+            {movieId ? isLoading ? <Loader/> : <SidebarSlide /> : null}
           </div>
         </div>
       </div>
