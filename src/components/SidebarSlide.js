@@ -20,6 +20,15 @@ export default function SidebarSlide() {
   useEffect(() =>{
     dispatch(fetchMovie(movieId))
   }, [dispatch, movieId])
+
+  useEffect(function(){
+    if (!title) return
+    document.title = `Movie | ${title}`
+
+    return function(){
+      document.title = `OMDB - Movies`
+    }
+  }, [title])
   
   return (
     <div className='sidebarSlide' id='sidebarSlide'>
