@@ -1,6 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
 import { fetchId, removeId } from "./moviesSlice";
-import { Link, animateScroll as scroll } from 'react-scroll';
 
 export default function Movie({ movie }) {
 
