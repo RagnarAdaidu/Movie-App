@@ -19,7 +19,7 @@ function App() {
             <SearchDisplayMovie />
             <ResetButton />
             {isLoading ? <Loader /> : <MovieList />}
-            {movieId ? isLoading ? <Loader/> : <SidebarSlide /> : null}
+            {movieId && <SidebarSlide /> }
           </div>
         </div>
       </div>

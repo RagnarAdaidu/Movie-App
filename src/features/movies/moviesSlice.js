@@ -32,6 +32,12 @@ export default function moviesReducer(state=initialState, action){
         ...state,
         movieId: action.payload
       }
+    case 'omdb/error':
+      return{
+        ...state,
+        error: action.payload,
+        isLoading: false
+      }
       default:
         return state
   }
@@ -40,22 +46,40 @@ export default function moviesReducer(state=initialState, action){
 export function fetchMovies(query){
   
   return async function(dispatch, getState){
-    dispatch({type: 'omdb/fetchingMovies'})
-    const res = await fetch(`http://www.omdbapi.com/?apikey=${KEY}&s=${query}`)
-      const data = await res.json()
+    try {
+      dispatch({type: 'omdb/fetchingMovies'})
+      const res = await fetch(`https://www.omdbapi.com/?apikey=${KEY}&s=${query}`)
+        const data = await res.json()
+        
+        dispatch({type:'omdb/fetchMovies', payload: data})
       
-      dispatch({type:'omdb/fetchMovies', payload: data})
+    } catch (error) {
+      if (error) {
+        console.log(error.message);
+        dispatch({type: 'omdb/error', payload: error.message})
+        dispatch({type:'omdb/fetchMovies', payload: []})
+      }
+    }
   }
 }
 
 export function fetchMovie(movieId){
   
   return async function(dispatch, getState){
-    dispatch({type: 'omdb/fetchingMovie'})
-    const res = await fetch(`http://www.omdbapi.com/?apikey=${KEY}&i=${movieId}`)
-      const data = await res.json()
+    try {
       
-      dispatch({type:'omdb/fetchMovie', payload: data})
+      dispatch({type: 'omdb/fetchingMovies'})
+      const res = await fetch(`https://www.omdbapi.com/?apikey=${KEY}&i=${movieId}`)
+        const data = await res.json()
+        
+        dispatch({type:'omdb/fetchMovie', payload: data})
+    } catch (error) {
+      if (error) {
+        console.log(error.message);
+        dispatch({type: 'omdb/error', payload: error.message})
+        dispatch({type:'omdb/fetchMovie', payload: {}})
+      }
+    }
   }
 }
 
